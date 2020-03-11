@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+>
+
+    <ImageView
+            android:id="@+id/imageTaskTodo"
+            android:src="@drawable/ic_todo"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/txtDescriptionItem"
+            android:text="Descricao"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageTaskTodo"
+    />
+
+    <TextView
+            android:id="@+id/txtPriority"
+            android:text="Prioridade"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageTaskTodo"
+            android:layout_below="@id/txtDescriptionItem"
+    />
+
+    <TextView
+            android:id="@+id/txtDueDate"
+            android:text="Date"
+            android:layout_above="@+id/view"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    />
+    <View android:layout_width="match_parent"
+          android:id="@+id/view"
+          android:layout_height="1dp"
+          android:layout_marginTop="20dp"
+          android:layout_below="@+id/txtPriority"
+          android:background="#ececec"
+    />
+
+
+</RelativeLayout>
