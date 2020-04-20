@@ -11,6 +11,8 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.app.NotificationCompat
 import android.R
+import dev.gilmario.task.view.LoginActivity
+import dev.gilmario.task.view.MainActivity
 import dev.gilmario.task.view.TaskListFragment
 
 
@@ -32,7 +34,7 @@ class AlarmReceiver : BroadcastReceiver() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT) //set priority of notification
 
 
-        val notificationIntent = Intent(context, TaskListFragment::class.java)
+        val notificationIntent = Intent(context, MainActivity::class.java)
 
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         //notification message will get at NotificationView

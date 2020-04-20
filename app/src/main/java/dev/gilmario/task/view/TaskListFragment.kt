@@ -73,7 +73,6 @@ class TaskListFragment : Fragment(), View.OnClickListener {
         val userId = mSecurityPreferences.getStoredString(TaskConstants.KEY.USER_ID).toInt()
         val taskListByUser = mTaskListBusiness.getListTaskByUser(userId, mTaskFilter)
         mRecycler.adapter = TaskListAdapter(taskListByUser, mTaskListFragment)
-
     }
 
     override fun onClick(view: View?) {

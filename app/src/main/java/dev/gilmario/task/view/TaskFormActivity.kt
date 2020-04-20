@@ -115,6 +115,10 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
 
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     fun setListener() {
         btnDate.setOnClickListener(this)
         btnSaveTask.setOnClickListener(this)

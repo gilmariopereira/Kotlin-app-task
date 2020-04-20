@@ -11,21 +11,25 @@ import dev.gilmario.task.business.UserBusiness
 import dev.gilmario.task.util.SecurityPreferences
 
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var userBusiness : UserBusiness
     private lateinit var mSecurityPreferences : SecurityPreferences
+    private var mPassword = "";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val bundle :Bundle ?=intent.extras
+        if (bundle!=null){
+            mPassword = bundle.getString("password")
+        }
+
         userBusiness = UserBusiness(this)
         mSecurityPreferences = SecurityPreferences(this)
-
-        //startActivity(Intent(this, RegisterActivity::class.java))
-
         userBusiness
         verifyLoggerUser()
         setListeners()
@@ -33,10 +37,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setListeners() {
         btnLogin.setOnClickListener(this)
+        btnRegister.setOnClickListener(this)
+
     }
     override fun onClick(view: View?) {
         if(view?.id == R.id.btnLogin)  {
             validarlogin();
+        }else if (view?.id ==R.id.btnRegister) {
+            registerLogin();
         }
     }
 
@@ -44,9 +52,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
        var id = mSecurityPreferences.getStoredString(TaskConstants.KEY.USER_ID)
        val name = mSecurityPreferences.getStoredString(TaskConstants.KEY.USER_NAME)
        val email =  mSecurityPreferences.getStoredString(TaskConstants.KEY.USER_EMAIL)
-        if(name != "" && email != "") {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+        if(name != "" && email != "" && mPassword !="") {
+                if(userBusiness.validUser(email, mPassword)) {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
+
         }
     }
 
@@ -59,6 +70,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }else {
             Toast.makeText(this, "Usuario ou senha invalido", Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun registerLogin() {
+        startActivity(Intent(this, RegisterActivity::class.java))
     }
 
 }

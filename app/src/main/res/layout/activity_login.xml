@@ -38,4 +38,13 @@
             android:layout_marginTop="50dp"
             tools:ignore="MissingConstraints"/>
 
+    <Button
+            android:text="Regitrar"
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            android:layout_marginRight="10dp"
+            tools:ignore="MissingConstraints"/>
+
 </android.support.constraint.ConstraintLayout>

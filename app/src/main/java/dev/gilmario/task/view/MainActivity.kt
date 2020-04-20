@@ -44,16 +44,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mPriorityBusiness = PriorityBusiness(this)
         userBusiness = UserBusiness(this)
 
-
-
-
-
-      //  userBusiness.deleteAll();
-
-        usuarios = userBusiness.getListUsers()
-
-        Log.d("myTag", "usuario"+usuarios.get(0));
-
         prioridades  = mPriorityBusiness.getList()
         if(prioridades.size == 0) {
             mPriorityBusiness.insert(1, "Baixa")
@@ -86,7 +76,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun startFragmentDefault() {
-        val mfragment :Fragment = TaskListFragment.newInstance(TaskConstants.TASKFILTER.COMPLETE);
+        val mfragment :Fragment = TaskListFragment.newInstance(TaskConstants.TASKFILTER.TOO);
         supportFragmentManager.beginTransaction().replace(R.id.frameContent, mfragment).commit()
     }
 
@@ -102,7 +92,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
 
-         var mfragment :Fragment = TaskListFragment.newInstance(TaskConstants.TASKFILTER.COMPLETE)
+         var mfragment :Fragment = TaskListFragment.newInstance(TaskConstants.TASKFILTER.TOO)
 
         when (item.itemId) {
             R.id.nav_done -> {
